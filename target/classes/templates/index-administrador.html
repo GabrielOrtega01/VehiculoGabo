@@ -1,0 +1,175 @@
+<!-- C:\mongo\mongodbvehiculosgabo\src\main\resources\templates\index-administrador.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="png" sizes="32x32" rel="icon"
+		href="https://lh3.googleusercontent.com/a/ACg8ocJq9wVRTMQaBGhOzSAkpqNfFOBkn7f398iktNR4gVTLteTXhNU=s288-c-no">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<title>Empleado</title>
+	<style>
+		html,
+		body {
+			height: 100%;
+			font-family: Arial, sans-serif;
+			background: url('https://cdn.pixabay.com/photo/2020/01/10/10/19/leaves-4754980_1280.jpg') no-repeat center center fixed;
+			background-size: cover;
+			color: #f8f9fa;
+		}
+
+		.navbar,
+		.header,
+		.footer {
+			background-color: rgba(38, 31, 89, 0.9);
+			color: white;
+			padding: 10px;
+		}
+
+		.card {
+			background-color: rgba(255, 255, 255, 0.85);
+			border: 2px solid #6c757d;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.card:hover {
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+			transform: translateY(-5px);
+		}
+
+		.btn-large {
+			padding: 15px 40px;
+			font-size: 1.5rem;
+			margin: 10px;
+			transition: transform 0.2s, box-shadow 0.3s;
+		}
+
+		.btn-large:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+		}
+
+		@media (max-width: 768px) {
+			.btn-large {
+				font-size: 1rem;
+				padding: 10px 20px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg">
+		<a href="/" class="navbar-brand">
+			<img src="https://lh3.googleusercontent.com/a/ACg8ocJq9wVRTMQaBGhOzSAkpqNfFOBkn7f398iktNR4gVTLteTXhNU=s288-c-no"
+				alt="Logo VehiculosGabo" width="50" height="50" style="margin-right: 15px;">
+		</a>
+		<h1 class="navbar-title h4 m-0">VehiculosGabo</h1>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="btn my-2 my-sm-0" th:href="@{/}">
+						<button class="Btn">
+							<div class="sign">
+								<svg viewBox="0 0 512 512">
+									<path
+										d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+									</path>
+								</svg>
+							</div>
+							<div class="text">Logout</div>
+						</button>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="title text-center">
+			<h1>¡Bienvenid@, <span th:text="${usuario}"></span>! <i class="bi bi-person-video"></i></h1>
+			<h2>MENÚ</h2>
+			<p>Selecciona la opción que necesites</p>
+		</div>
+
+		<div class="row text-center">
+			<div class="col-md-6 col-lg-4 mb-4">
+				<a th:href="@{/administrador/cliente/crear}" class="btn btn-success btn-lg btn-large">
+					<i class="bi bi-person-add" style="font-size: 30px;"></i>
+					<p>Agregar Cliente</p>
+				</a>
+			</div>
+			<div class="row text-center">
+				<!-- Listar Clientes -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/lista}" class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-file-earmark-text-fill" style="font-size: 30px;"></i>
+						<p>Listar Clientes</p>
+					</a>
+				</div>
+
+				<!-- Agregar Vehículo -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/vehiculo/crear}" class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-car-front" style="font-size: 30px;"></i>
+						<p>Agregar Vehículo</p>
+					</a>
+				</div>
+
+				<!-- Listar Vehículos -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/lista-vehiculo}" class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-file-earmark-text-fill" style="font-size: 30px;"></i>
+						<p>Listar Vehículos</p>
+					</a>
+				</div>
+
+				<!-- Agregar Reserva -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/reserva/crear}" class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-person-add" style="font-size: 30px;"></i>
+						<p>Agregar Reserva</p>
+					</a>
+				</div>
+
+				<!-- Listar Reservas -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/lista-reserva}" title="Informes"
+						class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-file-earmark-text-fill" style="font-size: 40px;"></i>
+						<p>Listar Reservas</p>
+					</a>
+				</div>
+
+				<!-- Agregar Factura -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/factura/crear}" class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-person-add" style="font-size: 30px;"></i>
+						<p>Agregar Factura</p>
+					</a>
+				</div>
+
+				<!-- Listar Facturas -->
+				<div class="col-md-6 col-lg-4 mb-4">
+					<a th:href="@{/administrador/lista-factura}" title="Informes"
+						class="btn btn-success btn-lg btn-large">
+						<i class="bi bi-file-earmark-text-fill" style="font-size: 40px;"></i>
+						<p>Listar Factura</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer text-center">
+		<p>&copy; 2023 VehiculosGabo - Todos los derechos reservados.</p>
+	</footer>
